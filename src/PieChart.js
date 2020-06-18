@@ -3,10 +3,8 @@ import * as d3 from 'd3';
 import styled from 'styled-components';
 
 const Path = styled.path`
-	fill: ${props =>
-		props.level === 4
-		? d3.schemePaired[props.index] 
-		: d3.color(d3.schemePaired[0]).brighter(props.index)};
+	fill: ${(props) =>
+		props.level === 4 ? d3.schemePaired[props.index] : d3.color(d3.schemePaired[0]).brighter(props.index)};
 	cursor: pointer;
 	stroke: black;
 `;
@@ -21,6 +19,11 @@ const Arc = ({ arcData, onClick }) => {
 	function mouseOver() {
 		setRadiusAdd(20);
 	}
+
+	// const mouseOver = () => {
+	// 	const [ x, y ] = arc.centroid(arcData);
+	// 	console.log('X', x, 'Y', y);
+	// };
 	const arc = d3.arc().innerRadius(15 + radiusAdd / 2).outerRadius(105 + radiusAdd);
 	return (
 		<Path
